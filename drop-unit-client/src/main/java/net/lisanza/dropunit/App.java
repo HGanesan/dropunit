@@ -1,11 +1,11 @@
-package net.lisanza.dropunit.engineundertest;
+package net.lisanza.dropunit;
 
 
 import com.codahale.metrics.health.HealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
-import net.lisanza.dropunit.engineundertest.config.yml.AppConfiguration;
-import net.lisanza.dropunit.engineundertest.controller.ProxyController;
+import net.lisanza.dropunit.config.yml.AppConfiguration;
+import net.lisanza.dropunit.controller.ProxyController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

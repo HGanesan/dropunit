@@ -15,12 +15,9 @@ import javax.ws.rs.NotSupportedException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Produces(MediaType.APPLICATION_XML)
 @Path(RequestMappings.ROOT_SERVICE)
 public class DropUnitController {
     private static final Logger LOGGER = LoggerFactory.getLogger(DropUnitController.class);
@@ -73,7 +70,7 @@ public class DropUnitController {
         } else {
             result = lookup(createDropUnit(request.getPathInfo() + "?" + request.getQueryString(), method, content));
         }
-        validateRequestContentType(result, request);
+       // validateRequestContentType(result, request);
         // Response build up
         waitToRespond(result);
         Response.ResponseBuilder responseBuilder = buildResponse(result);
@@ -124,15 +121,6 @@ public class DropUnitController {
             LOGGER.error(msg);
             throw new NotFoundException(msg);
         }
-
-        LOGGER.info("lookup - url       : {}", result.getUrl());
-        LOGGER.info("lookup - method    : {}", result.getMethod());
-        LOGGER.info("lookup - req-type  : {}", result.getRequestContentType());
-        LOGGER.info("lookup - req-body  : {}", result.getRequestBody());
-        LOGGER.info("lookup - resp-delay: {}", result.getResponseDelay());
-        LOGGER.info("lookup - resp-code : {}", result.getResponseCode());
-        LOGGER.info("lookup - resp-type : {}", result.getResponseContentType());
-        LOGGER.info("lookup - resp-body : {}", result.getResponseBody());
         return result;
     }
 

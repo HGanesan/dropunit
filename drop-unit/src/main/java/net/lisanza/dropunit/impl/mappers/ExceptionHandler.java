@@ -31,8 +31,6 @@ public class ExceptionHandler implements ExceptionMapper<Exception> {
             status = Response.Status.UNAUTHORIZED;
         }
 
-        String message = String.format("%s exception \"%s\"", status.getReasonPhrase(), exception.getMessage());
-        LOGGER.error(message, exception);
-        return Response.status(status).build();
+        return Response.status(status).entity(exception.getMessage()).build();
     }
 }

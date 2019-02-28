@@ -31,6 +31,9 @@ public class DropUnitApplication<TypeOfConfiguration extends Configuration> exte
         environment.jersey().register(new DropUnitController(dropUnitService, dropUnitCount));
         environment.jersey().register(new DropRegistrationController(dropUnitService, dropUnitCount));
 
+        // Registration of the handlers / mappings
+        environment.jersey().register(new ExceptionHandler());
+
         // Registration of the required Dropwizard health checks
         environment.healthChecks().register("HEALTH", new HealthCheckService());
 

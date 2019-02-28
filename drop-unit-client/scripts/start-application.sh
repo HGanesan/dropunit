@@ -8,4 +8,4 @@ done
 echo "Simulator is running!"
 
 echo "Starting the Engine under test..."
-java -jar target/engine-under-test.jar server config/config-it.yml
+java -jar target/drop-unit-client.jar server config/config-it.yml

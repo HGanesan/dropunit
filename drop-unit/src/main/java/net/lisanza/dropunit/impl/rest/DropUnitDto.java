@@ -1,97 +1,46 @@
 package net.lisanza.dropunit.impl.rest;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
+import java.util.List;
 
-@XmlRootElement(name = "DropUnit")
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class DropUnitDto {
 
-    @XmlElement(name = "url")
+    @JsonProperty("url")
     private String url;
 
-    @XmlElement(name = "method")
+    @JsonProperty("method")
     private String method;
 
-    @XmlElement(name = "requestContentType")
+    @JsonProperty("requestContentType")
     private String requestContentType;
 
-    @XmlElement(name = "requestBody")
+    @JsonProperty("requestBody")
     private String requestBody;
 
-    @XmlElement(name = "responseCode")
+    @JsonProperty("responseCode")
     private int responseCode;
 
-    @XmlElement(name = "responseContentType")
+    @JsonProperty("responseContentType")
     private String responseContentType;
 
-    @XmlElement(name = "responseBody")
+    @JsonProperty("responseBody")
     private String responseBody;
 
-    @XmlElement(name = "responseDelay")
+    @JsonProperty("responseDelay")
     private int responseDelay;
 
-    public String getUrl() {
-        return url;
-    }
+    @JsonProperty("identifier")
+    private String identifier;
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    @JsonProperty("pattern")
+    private List<String> pattern;
 
-    public String getMethod() {
-        return method;
-    }
 
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    public String getRequestContentType() {
-        return requestContentType;
-    }
-
-    public void setRequestContentType(String requestContentType) {
-        this.requestContentType = requestContentType;
-    }
-
-    public String getRequestBody() {
-        return requestBody;
-    }
-
-    public void setRequestBody(String requestBody) {
-        this.requestBody = requestBody;
-    }
-
-    public int getResponseCode() {
-        return responseCode;
-    }
-
-    public void setResponseCode(int responseCode) {
-        this.responseCode = responseCode;
-    }
-
-    public String getResponseContentType() {
-        return responseContentType;
-    }
-
-    public void setResponseContentType(String responseContentType) {
-        this.responseContentType = responseContentType;
-    }
-
-    public String getResponseBody() {
-        return responseBody;
-    }
-
-    public void setResponseBody(String responseBody) {
-        this.responseBody = responseBody;
-    }
-
-    public int getResponseDelay() {
-        return responseDelay;
-    }
-
-    public void setResponseDelay(int responseDelay) {
-        this.responseDelay = responseDelay;
-    }
 }

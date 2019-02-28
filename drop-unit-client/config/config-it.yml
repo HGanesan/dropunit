@@ -1,0 +1,19 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 8080
+
+logging:
+  level: INFO
+  loggers:
+    "net.lisanza.dropunit":
+      level: DEBUG
+      additive: false
+      appenders:
+        - type: file
+          currentLogFilename: ./logs/dropunit-client.log
+          archivedLogFilenamePattern: ./logs/dropunit-client-%d.log.gz
+          archivedFileCount: 5
+          timeZone: UTC
+        - type: console
+          target: stderr

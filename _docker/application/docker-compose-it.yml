@@ -8,11 +8,11 @@ services:
     volumes:
       - ../../drop-unit-simulator:/application
     ports:
-    - "9080:9080"
-    - "9081:9081"
+    - "9070:9070"
+    - "9071:9071"
     networks:
       static-network:
-        ipv4_address: 172.20.0.11
+        ipv4_address: 172.20.0.13
 
   application-engine:
     build: ../containers/engine-under-test
@@ -21,11 +21,11 @@ services:
     volumes:
       - ../../engine-under-test:/application
     ports:
-      - "8080:8080"
-      - "8443:8443"
+      - "7070:7070"
+      - "7443:7443"
     networks:
       static-network:
-        ipv4_address: 172.20.0.5
+        ipv4_address: 172.20.0.24
 
 networks:
   static-network:
