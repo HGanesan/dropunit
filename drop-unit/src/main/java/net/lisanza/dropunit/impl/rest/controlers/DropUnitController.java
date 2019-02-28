@@ -35,7 +35,7 @@ public class DropUnitController {
     @Path("{any: .*}")
     public Response dropUnitGet(@Context HttpServletRequest request) {
         dropUnitCount.incrHttpGet();
-        return dropUnit( request, "GET", "");
+        return dropUnit(request, "GET", "");
     }
 
     @POST
@@ -70,7 +70,7 @@ public class DropUnitController {
         } else {
             result = lookup(createDropUnit(request.getPathInfo() + "?" + request.getQueryString(), method, content));
         }
-       // validateRequestContentType(result, request);
+        //validateRequestContentType(result, request);
         // Response build up
         waitToRespond(result);
         Response.ResponseBuilder responseBuilder = buildResponse(result);

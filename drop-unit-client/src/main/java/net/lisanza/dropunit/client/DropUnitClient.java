@@ -1,6 +1,5 @@
 package net.lisanza.dropunit.client;
 
-import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import net.lisanza.dropunit.impl.rest.DropUnitDto;
 import net.lisanza.dropunit.request.RequestWrapper;
