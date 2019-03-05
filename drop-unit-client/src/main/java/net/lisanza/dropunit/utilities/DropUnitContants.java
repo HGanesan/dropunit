@@ -6,6 +6,7 @@ import javax.ws.rs.core.MediaType;
  * DropUnit Contants Class
  */
 public final class DropUnitContants {
+
     //Content-Type
     public static final String XML_TYPE = MediaType.APPLICATION_XML;
     public static final String JSON_TYPE = MediaType.APPLICATION_JSON;

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import net.lisanza.dropunit.impl.rest.DropUnitDto;
+import net.lisanza.dropunit.utilities.DropUnit;
 import net.lisanza.dropunit.utilities.DropUnitContants;
 
 import java.util.List;
@@ -46,67 +47,47 @@ public class DropUnitDtoMapper {
     }
 
     /**
+     * Method to map the incoming parameters to POST DropUnitDto object
+     * @param - Enum
+     * @return DropUnitDto - mapped object
+     */
+    public DropUnitDto formPostDropUnitRequest(DropUnit drop) {
+
+        return DropUnitDto.builder()
+                .responseDelay(drop.getDelay())
+                .method(drop.getMethod())
+                .requestBody(requestPath)
+                .responseBody(responsePath)
+                .requestContentType(drop.getReqContentType())
+                .responseContentType(drop.getResContentType())
+                .responseCode(drop.getCode())
+                .url(drop.getUrl())
+                .pattern(pattern)
+                .identifier(drop.getIdentifier())
+                .build();
+    }
+
+    /**
      * Method to map the incoming parameters to  GET DropUnitDto object
      *
      * @return DropUnitDto - mapped object
      */
-    public DropUnitDto formGetDropUnitRequest() {
+    public DropUnitDto formGetDropUnitRequest(DropUnit drop) {
 
-        return DropUnitDto.builder().identifier(identifier)
-                .responseDelay(delay)
-                .method(DropUnitContants.GET)
+        return DropUnitDto.builder()
+                .responseDelay(drop.getDelay())
+                .method(drop.getMethod())
                 .requestBody(requestPath)
                 .responseBody(responsePath)
-                .requestContentType(requestContentType)
-                .responseContentType(responseContentType)
-                .responseCode(responseCode)
-                .url(url)
+                .requestContentType(drop.getReqContentType())
+                .responseContentType(drop.getResContentType())
+                .responseCode(drop.getCode())
+                .url(drop.getUrl())
                 .pattern(pattern)
-                .identifier(identifier)
+                .identifier(drop.getIdentifier())
                 .build();
     }
 
-    /**
-     * Method to map the incoming parameters to DELETE DropUnitDto object
-     *
-     * @return DropUnitDto - mapped object
-     */
-    public DropUnitDto formDeleteDropUnitRequest() {
-
-        return DropUnitDto.builder().identifier(identifier)
-                .responseDelay(delay)
-                .method(DropUnitContants.DELETE)
-                .requestBody(requestPath)
-                .responseBody(responsePath)
-                .requestContentType(requestContentType)
-                .responseContentType(responseContentType)
-                .responseCode(responseCode)
-                .url(url)
-                .pattern(pattern)
-                .identifier(identifier)
-                .build();
-    }
-
-    /**
-     * Method to map the incoming parameters to PUT DropUnitDto object
-     *
-     * @return DropUnitDto - mapped object
-     */
-    public DropUnitDto formPutDropUnitRequest() {
-
-        return DropUnitDto.builder().identifier(identifier)
-                .responseDelay(delay)
-                .method(DropUnitContants.PUT)
-                .requestBody(requestPath)
-                .responseBody(responsePath)
-                .requestContentType(requestContentType)
-                .responseContentType(responseContentType)
-                .responseCode(responseCode)
-                .url(url)
-                .pattern(pattern)
-                .identifier(identifier)
-                .build();
-    }
 
 
 }
