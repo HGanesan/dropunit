@@ -1,8 +1,12 @@
 package net.lisanza.dropunit.impl.rest.services;
 
 import net.lisanza.dropunit.impl.rest.DropUnitDto;
+import org.custommonkey.xmlunit.DetailedDiff;
+import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.Difference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.SAXException;
 
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.InternalServerErrorException;
@@ -15,11 +19,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import org.custommonkey.xmlunit.DetailedDiff;
-import org.custommonkey.xmlunit.Diff;
-import org.custommonkey.xmlunit.Difference;
-import org.xml.sax.SAXException;
 
 public class DropUnitService {
 
@@ -175,9 +174,7 @@ public class DropUnitService {
 
         List<Difference> differenceList = compareXML( requestDto.getRequestBody(),dropUnitDto.getRequestBody());
         List<String> patternList = dropUnitDto.getPattern();
-        if (differenceList.size() != patternList.size()) {
-            return false;
-        } else return comparePattern(differenceList, patternList);
+        return comparePattern(differenceList, patternList);
 
     }
 

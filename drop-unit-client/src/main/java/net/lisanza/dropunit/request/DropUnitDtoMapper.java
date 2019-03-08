@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import net.lisanza.dropunit.impl.rest.DropUnitDto;
-import net.lisanza.dropunit.utilities.DropUnit;
 import net.lisanza.dropunit.utilities.DropUnitContants;
 
 import java.util.List;
@@ -47,44 +46,44 @@ public class DropUnitDtoMapper {
     }
 
     /**
-     * Method to map the incoming parameters to POST DropUnitDto object
+     * Method to map the incoming parameters to POST-XML DropUnitDto object
      * @param - Enum
      * @return DropUnitDto - mapped object
      */
-    public DropUnitDto formPostDropUnitRequest(DropUnit drop) {
+    public DropUnitDto formPostXmlDropUnitRequest() {
 
         return DropUnitDto.builder()
-                .responseDelay(drop.getDelay())
-                .method(drop.getMethod())
+                .responseDelay(delay)
+                .method(DropUnitContants.POST)
                 .requestBody(requestPath)
                 .responseBody(responsePath)
-                .requestContentType(drop.getReqContentType())
-                .responseContentType(drop.getResContentType())
-                .responseCode(drop.getCode())
-                .url(drop.getUrl())
+                .requestContentType(DropUnitContants.XML_TYPE)
+                .responseContentType(DropUnitContants.XML_TYPE)
+                .responseCode(DropUnitContants.SUCCESS_CODE)
+                .url(url)
                 .pattern(pattern)
-                .identifier(drop.getIdentifier())
+                .identifier(DropUnitContants.SOFT)
                 .build();
     }
 
     /**
-     * Method to map the incoming parameters to  GET DropUnitDto object
+     * Method to map the incoming parameters to  GET-XML DropUnitDto object
      *
      * @return DropUnitDto - mapped object
      */
-    public DropUnitDto formGetDropUnitRequest(DropUnit drop) {
+    public DropUnitDto formGetXmlDropUnitRequest() {
 
-        return DropUnitDto.builder()
-                .responseDelay(drop.getDelay())
-                .method(drop.getMethod())
+        return DropUnitDto.builder().identifier(identifier)
+                .responseDelay(delay)
+                .method(DropUnitContants.GET)
                 .requestBody(requestPath)
                 .responseBody(responsePath)
-                .requestContentType(drop.getReqContentType())
-                .responseContentType(drop.getResContentType())
-                .responseCode(drop.getCode())
-                .url(drop.getUrl())
+                .requestContentType(DropUnitContants.XML_TYPE)
+                .responseContentType(DropUnitContants.XML_TYPE)
+                .responseCode(DropUnitContants.SUCCESS_CODE)
+                .url(url)
                 .pattern(pattern)
-                .identifier(drop.getIdentifier())
+                .identifier(DropUnitContants.SOFT)
                 .build();
     }
 

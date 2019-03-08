@@ -14,19 +14,6 @@ services:
       static-network:
         ipv4_address: 172.20.0.13
 
-  application-engine:
-    build: ../containers/engine-under-test
-    image: engine-under-test
-    container_name: engine-under-test
-    volumes:
-      - ../../engine-under-test:/application
-    ports:
-      - "7070:7070"
-      - "7443:7443"
-    networks:
-      static-network:
-        ipv4_address: 172.20.0.24
-
 networks:
   static-network:
     ipam:
